@@ -1,0 +1,7 @@
+services:
+  lumbar-rehab:
+    build: .
+    container_name: lumbar-rehab
+    ports:
+      - "8080:80"
+    restart: unless-stopped
