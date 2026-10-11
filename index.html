@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f7f9fb">
+<title>腰椎康复训练</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>腰椎康复训练</h1>
+  <p class="app-sub">腰椎间盘突出 · 腰肌劳损 · 家庭 + 健身房</p>
+</header>
+
+<main class="app-main">
+  <section id="tab-plan" class="tab-page"></section>
+  <section id="tab-library" class="tab-page"></section>
+  <section id="tab-player" class="tab-page"></section>
+  <section id="tab-log" class="tab-page"></section>
+</main>
+
+<nav class="tabbar">
+  <button id="nav-plan" data-tab="plan">📋<span>计划</span></button>
+  <button id="nav-library" data-tab="library">💪<span>动作库</span></button>
+  <button id="nav-player" data-tab="player">▶️<span>跟练</span></button>
+  <button id="nav-log" data-tab="log">📝<span>记录</span></button>
+</nav>
+
+<div class="disclaimer">
+  本应用为康复训练辅助工具，不构成医疗建议。训练前请咨询医生或物理治疗师；出现大小便失禁、鞍区麻木、下肢进行性无力请立即就医。
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/plan.js"></script>
+<script src="js/player.js"></script>
+<script src="js/log.js"></script>
+<script src="js/library.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
