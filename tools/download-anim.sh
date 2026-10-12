@@ -28,6 +28,13 @@ dl "$BASE_GIF/0099-gGNQmVt.gif" "$ROOT/gifs/split-squat.gif"
 dl "$BASE_GIF/2133-qPEzJjA.gif" "$ROOT/gifs/farmer-carry.gif"
 dl "$BASE_GIF/1459-rR0LJzx.gif" "$ROOT/gifs/db-rdl.gif"
 dl "$BASE_GIF/0489-zhMwOwE.gif" "$ROOT/gifs/back-ext.gif"
+dl "$BASE_GIF/0234-4f8RXP8.gif" "$ROOT/gifs/standing-cable-row.gif"
+dl "$BASE_GIF/0861-fUBheHs.gif" "$ROOT/gifs/seated-cable-row.gif"
+dl "$BASE_GIF/0327-7vG5o25.gif" "$ROOT/gifs/chest-supported-db-row.gif"
+dl "$BASE_GIF/0739-10Z2DXU.gif" "$ROOT/gifs/leg-press-partial.gif"
+dl "$BASE_GIF/0085-wQ2c4XD.gif" "$ROOT/gifs/barbell-rdl.gif"
+dl "$BASE_GIF/0410-qx4fgX7.gif" "$ROOT/gifs/bulgarian-split-squat.gif"
+dl "$BASE_GIF/1757-gKozT8X.gif" "$ROOT/gifs/single-leg-rdl.gif"
 # SVG 分帧
 for act in "bird-dog:bird-dog" "hip-flexor-stretch:kneeling-hip-flexor-stretch" "chest-row:chest-supported-row" "hip-thrust:hip-thrust"; do
   local="${act%%:*}"; remote="${act##*:}"

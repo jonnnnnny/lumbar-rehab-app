@@ -2,15 +2,22 @@
 'use strict';
 
 var LibraryPage = (function () {
-  var q = '', loc = 'all', openId = null;
+  var q = '', loc = 'all', level = 'all', openId = null;
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  function levelBadge(e) {
+    if (!e.level) return '';
+    var cls = e.level === '初级' ? 'tag-level-beginner' : e.level === '中级' ? 'tag-level-intermediate' : 'tag-level-advanced';
+    return ' <span class="' + cls + '">' + esc(e.level) + '</span>';
+  }
+
   function filtered() {
     return EXERCISES.filter(function (e) {
       if (loc !== 'all' && e.location !== loc) return false;
+      if (level !== 'all' && e.level !== level) return false;
       if (q) {
         var hay = (e.name + ' ' + e.en + ' ' + e.muscles).toLowerCase();
         if (hay.indexOf(q.toLowerCase()) < 0) return false;
@@ -22,7 +29,7 @@ var LibraryPage = (function () {
   function itemHtml(e) {
     var open = openId === e.id;
     var html = '<div class="card lib-item' + (open ? ' open' : '') + '" data-id="' + e.id + '">';
-    html += '<div class="lib-head"><div><div class="lib-name">' + esc(e.name) +
+    html += '<div class="lib-head"><div><div class="lib-name">' + esc(e.name) + levelBadge(e) +
       (e.dosing.advanced ? ' <span class="tag-adv">进阶</span>' : '') + '</div>' +
       '<div class="lib-sub">' + esc(e.en) + ' · ' + esc(e.muscles) + '</div></div>' +
       '<span class="lib-loc">' + (e.location === 'home' ? '居家' : '健身房') + '</span></div>';
@@ -59,6 +66,12 @@ var LibraryPage = (function () {
     html += '<button class="btn filter-btn' + (loc === 'all' ? ' active' : '') + '" data-loc="all">全部</button>';
     html += '<button class="btn filter-btn' + (loc === 'home' ? ' active' : '') + '" data-loc="home">居家</button>';
     html += '<button class="btn filter-btn' + (loc === 'gym' ? ' active' : '') + '" data-loc="gym">健身房</button>';
+    html += '</div>';
+    html += '<div class="filter-row">';
+    html += '<button class="btn filter-btn' + (level === 'all' ? ' active' : '') + '" data-level="all">全部难度</button>';
+    html += '<button class="btn filter-btn' + (level === '初级' ? ' active' : '') + '" data-level="初级">初级</button>';
+    html += '<button class="btn filter-btn' + (level === '中级' ? ' active' : '') + '" data-level="中级">中级</button>';
+    html += '<button class="btn filter-btn' + (level === '高级' ? ' active' : '') + '" data-level="高级">高级</button>';
     html += '</div></div>';
 
     html += '<div class="lib-list">';
@@ -95,7 +108,11 @@ var LibraryPage = (function () {
       }, 400);
     });
     el.querySelectorAll('.filter-btn').forEach(function (b) {
-      b.addEventListener('click', function () { loc = b.dataset.loc; render(); });
+      b.addEventListener('click', function () {
+        if (b.dataset.loc !== undefined) loc = b.dataset.loc;
+        if (b.dataset.level !== undefined) level = b.dataset.level;
+        render();
+      });
     });
     el.querySelectorAll('.lib-item').forEach(function (card) {
       card.querySelector('.lib-head').addEventListener('click', function () {
