@@ -310,3 +310,26 @@ body {
 @media (min-width: 560px) {
   .week-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* ===== 动作动画 ===== */
+.anim-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 12px;
+}
+.ex-anim {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f4f6f8;
+  border: 1px solid var(--line, #e5e7eb);
+}
+.player-anim {
+  width: 200px;
+  height: 200px;
+}
+.lib-anim {
+  width: 160px;
+  height: 160px;
+}

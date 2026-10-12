@@ -75,6 +75,7 @@ var Player = (function () {
 
   function exit() {
     clearTimer();
+    AnimHelper.stopAll();
     S = null;
     switchTab('plan');
   }
@@ -95,6 +96,8 @@ var Player = (function () {
   function exerciseInfoHtml(it) {
     var ex = it.ex;
     var h = '<div class="ex-card">';
+    var animHtml = AnimHelper.html(ex, 'ex-anim player-anim');
+    if (animHtml) h += '<div class="anim-wrap">' + animHtml + '</div>';
     h += '<div class="ex-name">' + esc(ex.name) + '</div>';
     h += '<div class="ex-en">' + esc(ex.en) + ' · ' + esc(ex.muscles) + '</div>';
     h += '<div class="ex-meta"><span>器械：' + esc(ex.equipment) + '</span></div>';
@@ -160,6 +163,7 @@ var Player = (function () {
     }
     el.innerHTML = h;
     bindExit();
+    AnimHelper.bind(el);
 
     if (ex.type === 'reps') {
       document.getElementById('p-minus').addEventListener('click', function () {

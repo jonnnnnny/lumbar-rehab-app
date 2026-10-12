@@ -40,6 +40,8 @@ var LibraryPage = (function () {
         '<span class="lib-loc">' + (e.location === 'home' ? '居家' : '健身房') + '</span></div>';
       if (open) {
         html += '<div class="lib-body">';
+        var animHtml = AnimHelper.html(e, 'ex-anim lib-anim');
+        if (animHtml) html += '<div class="anim-wrap">' + animHtml + '</div>';
         html += '<div class="lib-row"><span class="lib-label">器械</span>' + esc(e.equipment) + '</div>';
         html += '<div class="lib-row"><span class="lib-label">剂量</span>' +
           esc(e.dosing.sets) + '组 × ' + esc(e.dosing.reps) +
@@ -82,12 +84,14 @@ var LibraryPage = (function () {
         var id = card.dataset.id;
         openId = (openId === id) ? null : id;
         render();
+        AnimHelper.bind(el);
         if (openId) {
           var sel = el.querySelector('[data-id="' + openId + '"]');
           if (sel) sel.scrollIntoView({ block: 'nearest' });
         }
       });
     });
+    AnimHelper.bind(el);
   }
 
   return { render: render };
