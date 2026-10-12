@@ -73,74 +73,123 @@ const EXERCISES = [
     dosing: { sets: '2', reps: '15-20秒/侧', type: 'hold' }, type: 'hold'
   },
   {
-    id: 'pallof-press', name: 'Pallof 推', en: 'Pallof Press', location: 'gym',
+    id: 'pallof-press', name: 'Pallof 推', en: 'Pallof Press', location: 'gym', level: '初级',
     muscles: '核心、腹斜肌', equipment: '绳索/弹力带', alt: ['dead-bug'], anim: 'assets/anim/gifs/pallof-press.gif',
     steps: ['绳索与胸口同高，侧对器械站立', '肋骨叠在骨盆上', '双手前推时身体不被拉转', '从轻重量、窄站距开始'],
     mistakes: ['被绳索拉转身体'], stop: null,
     dosing: { sets: '2-3', reps: '8-12次/侧' }, type: 'reps'
   },
   {
-    id: 'chest-row', name: '胸托划船', en: 'Chest Supported Row', location: 'gym',
-    muscles: '背部、肱二头', equipment: '胸托划船器械', alt: ['lat-pulldown'], tip: '无胸托划船器械时，可用坐姿绳索划船替代', anim: ['assets/anim/svg/chest-row/frame-1.svg','assets/anim/svg/chest-row/frame-2.svg','assets/anim/svg/chest-row/frame-3.svg'],
+    id: 'chest-row', name: '胸托划船', en: 'Chest Supported Row', location: 'gym', level: '中级',
+    muscles: '背部、肱二头', equipment: '胸托划船器械', alt: ['seated-cable-row', 'lat-pulldown'], tip: '无胸托划船器械时，可用坐姿绳索划船或俯卧上斜凳哑铃划船替代', anim: ['assets/anim/svg/chest-row/frame-1.svg','assets/anim/svg/chest-row/frame-2.svg','assets/anim/svg/chest-row/frame-3.svg'],
     steps: ['胸部贴稳支撑垫，脚掌踩实', '先下沉肩胛', '再把肘拉向后下方', '不为增加幅度而挺腰'],
     mistakes: ['挺腰代偿'], stop: null,
     dosing: { sets: '2-3', reps: '8-12次' }, type: 'reps'
   },
   {
-    id: 'lat-pulldown', name: '中立握下拉', en: 'Lat Pulldown', location: 'gym',
+    id: 'lat-pulldown', name: '中立握下拉', en: 'Lat Pulldown', location: 'gym', level: '初级',
     muscles: '背阔肌', equipment: '高位下拉器械', alt: ['chest-row'], anim: 'assets/anim/gifs/lat-pulldown.gif',
-    steps: ['躯干略后倾但保持稳定', '把手拉向上胸', '肩膀远离耳朵', '不反复甩动借力'],
-    mistakes: ['甩动借力'], stop: '坐位诱发腿症状改为胸托划船',
+    steps: ['躯干略后倾但保持稳定', '把手拉向上胸（只做胸前，不做颈后）', '肩膀远离耳朵', '不反复甩动借力'],
+    mistakes: ['甩动借力', '颈后下拉'], stop: '坐位诱发腿症状改为胸托划船',
     dosing: { sets: '2-3', reps: '8-12次' }, type: 'reps'
   },
   {
-    id: 'goblet-squat', name: '箱式高脚杯深蹲', en: 'Goblet Box Squat', location: 'gym',
+    id: 'goblet-squat', name: '箱式高脚杯深蹲', en: 'Goblet Box Squat', location: 'gym', level: '初级',
     muscles: '股四头、臀、核心', equipment: '哑铃+高箱', alt: ['sit-stand'], anim: 'assets/anim/gifs/goblet-squat.gif',
-    steps: ['哑铃贴近胸口', '向后坐到高箱/长凳', '膝脚同向', '躯干与骨盆整体移动', '从高箱开始，稳定后再降低'],
-    mistakes: ['膝内扣', '弯腰'], stop: null,
+    steps: ['哑铃贴近胸口', '向后坐到高箱/长凳', '膝脚同向', '躯干与骨盆整体移动', '从高箱开始，稳定后再降低', '出现骨盆后倾（屁股眨眼）即为本次深度下限'],
+    mistakes: ['膝内扣', '弯腰', '蹲过深致骨盆后倾'], stop: null,
     dosing: { sets: '2-3', reps: '6-10次' }, type: 'reps'
   },
   {
-    id: 'split-squat', name: '扶架分腿蹲', en: 'Split Squat', location: 'gym',
+    id: 'split-squat', name: '扶架分腿蹲', en: 'Split Squat', location: 'gym', level: '中级',
     muscles: '股四头、臀、核心', equipment: '哑铃+固定架', alt: ['sit-stand'], tip: '平衡较差的新手可用坐到站代替', anim: 'assets/anim/gifs/split-squat.gif',
     steps: ['一手扶架保持平衡', '前脚全掌着地', '垂直下降，后膝朝地面', '避免前后摇晃', '先徒手再持轻哑铃'],
     mistakes: ['身体前后摇晃'], stop: null,
     dosing: { sets: '2-3', reps: '6-10次/侧' }, type: 'reps'
   },
   {
-    id: 'hip-thrust', name: '髋推', en: 'Hip Thrust', location: 'gym',
+    id: 'hip-thrust', name: '髋推', en: 'Hip Thrust', location: 'gym', level: '初级',
     muscles: '臀肌、腘绳肌', equipment: '杠铃/哑铃+凳', alt: ['glute-bridge'], tip: '新手第1-2周可用臀桥代替，先掌握臀部发力再做髋推', anim: ['assets/anim/svg/hip-thrust/frame-1.svg','assets/anim/svg/hip-thrust/frame-2.svg','assets/anim/svg/hip-thrust/frame-3.svg'],
-    steps: ['下巴微收，肋骨不外翻', '由臀部完成伸髋', '顶端不过度后仰', '重量放髋部并用软垫'],
+    steps: ['下巴微收，肋骨不外翻', '由臀部完成伸髋', '顶峰保持1-2秒，不过度后仰', '重量放髋部并用软垫'],
     mistakes: ['顶端过度后仰'], stop: null,
     dosing: { sets: '2-3', reps: '8-12次' }, type: 'reps'
   },
   {
-    id: 'farmer-carry', name: '农夫行走', en: 'Farmer Carry', location: 'gym',
+    id: 'farmer-carry', name: '农夫行走', en: 'Farmer Carry', location: 'gym', level: '初级',
     muscles: '前臂、上背、核心', equipment: '哑铃/壶铃', anim: 'assets/anim/gifs/farmer-carry.gif',
     steps: ['从双手等重开始', '身体直立、步幅自然', '不耸肩、不屏气', '转身时放慢'],
     mistakes: ['耸肩', '屏气'], stop: null,
     dosing: { sets: '3-5', reps: '20-40米', type: 'walk' }, type: 'walk'
   },
   {
-    id: 'gym-step-up', name: '台阶上步（健身房）', en: 'Weighted Step Up', location: 'gym',
+    id: 'gym-step-up', name: '台阶上步（健身房）', en: 'Weighted Step Up', location: 'gym', level: '初级',
     muscles: '股四头、臀肌', equipment: '台阶+哑铃', anim: 'assets/anim/gifs/gym-step-up.gif',
     steps: ['选能保持骨盆水平的台阶高度', '身体略前倾但腰背稳定', '控制下降'],
     mistakes: [], stop: null,
     dosing: { sets: '2', reps: '6-10次/侧' }, type: 'reps'
   },
   {
-    id: 'db-rdl', name: '哑铃罗马尼亚硬拉（进阶）', en: 'Dumbbell RDL', location: 'gym',
+    id: 'db-rdl', name: '哑铃罗马尼亚硬拉（进阶）', en: 'Dumbbell RDL', location: 'gym', level: '中级',
     muscles: '臀、腘绳肌、下背', equipment: '哑铃', alt: ['hip-thrust', 'glute-bridge'], anim: 'assets/anim/gifs/db-rdl.gif',
     steps: ['哑铃沿大腿下降，臀部向后', '只到还能保持控制的深度', '感受腘绳肌张力后夹臀站起', '不在底部反弹'],
     mistakes: ['底部反弹', '腰部弯曲'], stop: '出现腿部远端化（症状向小腿/足扩散）立即停止',
     dosing: { sets: '2-3', reps: '6-10次', advanced: true }, type: 'reps'
   },
   {
-    id: 'back-ext', name: '臀主导45°背伸（进阶可选）', en: 'Back Extension', location: 'gym',
+    id: 'back-ext', name: '臀主导45°背伸（进阶可选）', en: 'Back Extension', location: 'gym', level: '中级',
     muscles: '臀、腘绳肌、下背', equipment: '罗马背伸椅', alt: ['glute-bridge', 'hip-thrust'], anim: 'assets/anim/gifs/back-ext.gif',
-    steps: ['髋垫低于髋折点', '动作发力来自髋部', '只起到身体成直线', '优先徒手'],
+    steps: ['髋垫低于髋折点', '动作发力来自髋部', '只起到身体成直线', '顶峰保持1-2秒', '优先徒手'],
     mistakes: ['顶端过度后仰', '旋转'], stop: '对后伸敏感者、急性腿痛者不做',
     dosing: { sets: '2', reps: '8-12次', advanced: true }, type: 'reps'
+  },
+  {
+    id: 'standing-cable-row', name: '站姿绳索划船', en: 'Standing Cable Row', location: 'gym', level: '初级',
+    muscles: '背阔肌、菱形肌、斜方肌中下部', equipment: '绳索/龙门架', alt: ['seated-cable-row'], anim: 'assets/anim/gifs/standing-cable-row.gif',
+    steps: ['面对绳索站立，躯干直立', '腹部绷紧（轻微腹压）', '肩胛先下沉后缩', '把手拉至肋部，肘贴近身体'],
+    mistakes: ['弓背', '身体后仰甩动借力'], stop: '拉的动作诱发下肢放射痛暂缓',
+    dosing: { sets: '2-3', reps: '10-12次' }, type: 'reps'
+  },
+  {
+    id: 'seated-cable-row', name: '坐姿绳索划船', en: 'Seated Cable Row', location: 'gym', level: '中级',
+    muscles: '背阔肌、菱形肌、中背部', equipment: '坐姿划船器/低位绳索', alt: ['chest-row', 'standing-cable-row'], anim: 'assets/anim/gifs/seated-cable-row.gif',
+    steps: ['坐直，脚踩踏板，膝微屈', '腹部绷紧，腰背不塌', '把手拉至腹部/肋部', '顶峰保持1秒再缓慢回放'],
+    mistakes: ['大幅后仰借力', '耸肩', '腰背塌陷'], stop: '坐姿诱发坐骨神经痛加重暂缓',
+    dosing: { sets: '3', reps: '8-12次' }, type: 'reps'
+  },
+  {
+    id: 'chest-supported-db-row', name: '俯卧上斜凳哑铃划船', en: 'Chest-Supported DB Row', location: 'gym', level: '中级',
+    muscles: '背阔肌、菱形肌、三角肌后束', equipment: '训练凳（上斜30-45°）+哑铃', alt: ['chest-row', 'seated-cable-row'], anim: 'assets/anim/gifs/chest-supported-db-row.gif',
+    steps: ['俯卧于上斜凳，胸部贴稳凳面', '双臂自然下垂持哑铃', '肘拉向肋部，顶峰保持1秒', '肩胛后缩，不耸肩'],
+    mistakes: ['耸肩', '挺腰代偿', '幅度过大'], stop: '俯卧位诱发腰痛暂缓',
+    dosing: { sets: '3', reps: '8-12次' }, type: 'reps'
+  },
+  {
+    id: 'leg-press-partial', name: '腿举·限制行程', en: 'Leg Press (Partial Range)', location: 'gym', level: '中级',
+    muscles: '股四头肌、臀大肌', equipment: '腿举机', alt: ['goblet-squat'], tip: '关键是限制行程：腰背全程紧贴靠背，骨盆不离开靠背', anim: 'assets/anim/gifs/leg-press-partial.gif',
+    steps: ['腰背全程紧贴靠背', '双脚位置稍高，膝脚同向', '下放至骨盆即将离开靠背前即止（约膝屈90°）', '蹬起不锁死膝盖'],
+    mistakes: ['底部骨盆后倾离开靠背', '膝内扣', '蹲到底'], stop: '任何行程下出现腰部不适或下肢放射痛禁用',
+    dosing: { sets: '3', reps: '10-12次' }, type: 'reps'
+  },
+  {
+    id: 'barbell-rdl', name: '杠铃罗马尼亚硬拉', en: 'Barbell RDL', location: 'gym', level: '高级',
+    muscles: '腘绳肌、臀大肌、竖脊肌（等长）', equipment: '杠铃', alt: ['db-rdl'], tip: '前置条件：哑铃RDL动作模式已稳固、无下肢放射痛；建议录像检查动作', anim: 'assets/anim/gifs/barbell-rdl.gif',
+    steps: ['双脚与髋同宽，杠铃贴大腿前侧', '屈髋将杠铃沿腿前降至膝下（以腰椎保持中立为限）', '臀部发力站直，全程腰椎中立', '采用腹压+呼气发力'],
+    mistakes: ['腰椎屈曲', '杠铃远离身体', '底部反弹'], stop: '出现腿部远端化立即停止；急性期禁用',
+    dosing: { sets: '3-5', reps: '3-5次', advanced: true }, type: 'reps'
+  },
+  {
+    id: 'bulgarian-split-squat', name: '保加利亚分腿蹲', en: 'Bulgarian Split Squat', location: 'gym', level: '高级',
+    muscles: '股四头肌、臀大肌（单侧）', equipment: '训练凳+哑铃', alt: ['split-squat'], tip: '先徒手掌握平衡，再加哑铃', anim: 'assets/anim/gifs/bulgarian-split-squat.gif',
+    steps: ['后脚置于训练凳，前脚站稳', '躯干直立，腹部绷紧', '前腿下蹲至大腿约平行地面', '前膝对准脚尖，控制回起'],
+    mistakes: ['前膝内扣', '躯干过度前倾', '后脚蹬地借力'], stop: '平衡障碍无保护暂缓',
+    dosing: { sets: '3', reps: '8-10次/腿' }, type: 'reps'
+  },
+  {
+    id: 'single-leg-rdl', name: '单腿罗马尼亚硬拉', en: 'Single-Leg RDL', location: 'gym', level: '高级',
+    muscles: '腘绳肌、臀中肌/臀大肌（单侧+平衡）', equipment: '哑铃', alt: ['db-rdl'], tip: '扶墙/架子起步，骨盆不翻转', anim: 'assets/anim/gifs/single-leg-rdl.gif',
+    steps: ['单腿站立，对侧手持哑铃', '屈髋下放哑铃，后腿向后伸展', '躯干接近水平即回，骨盆保持水平', '站立腿微屈膝，全程缓慢控制'],
+    mistakes: ['骨盆翻转', '腰椎屈曲', '站立腿锁死'], stop: '动作中出现放射痛暂缓',
+    dosing: { sets: '2-3', reps: '8次/腿' }, type: 'reps'
   }
 ];
 
@@ -187,32 +236,33 @@ const SESSIONS = {
     ]
   },
   A: {
-    id: 'A', name: 'A课 · 深蹲+拉力+抗旋转', sub: '约45-55分钟 · 健身房', location: 'gym',
+    id: 'A', name: 'A课 · 深蹲+拉力+抗旋转（初级）', sub: '约45-55分钟 · 健身房', location: 'gym',
     items: [
       { kind: 'note', text: '单车/跑步机 6-8 分钟（热身）' },
       { exercise: 'pallof-press', dose: '2-3×8-12/侧' },
       { exercise: 'goblet-squat', dose: '2-3×6-10' },
-      { exercise: 'chest-row', dose: '2-3×8-12' },
-      { exercise: 'farmer-carry', dose: '3×20-40米' }
-    ]
-  },
-  B: {
-    id: 'B', name: 'B课 · 髋伸+单腿+拉力', sub: '约45-55分钟 · 健身房', location: 'gym',
-    items: [
-      { kind: 'note', text: '单车/椭圆机 6-8 分钟（热身）' },
-      { exercise: 'hip-thrust', dose: '2-3×8-12' },
-      { exercise: 'split-squat', dose: '2-3×6-10/侧' },
-      { exercise: 'lat-pulldown', dose: '2-3×8-12' },
+      { exercise: 'standing-cable-row', dose: '2-3×10-12' },
       { exercise: 'gym-step-up', dose: '2×6-10/侧' }
     ]
   },
+  B: {
+    id: 'B', name: 'B课 · 髋伸+单腿+拉力（初级）', sub: '约45-55分钟 · 健身房', location: 'gym',
+    items: [
+      { kind: 'note', text: '单车/椭圆机 6-8 分钟（热身）' },
+      { exercise: 'hip-thrust', dose: '2-3×8-12' },
+      { exercise: 'lat-pulldown', dose: '2-3×8-12' },
+      { exercise: 'split-squat', dose: '2-3×6-10/侧' },
+      { exercise: 'farmer-carry', dose: '3×20-40米' }
+    ]
+  },
   C: {
-    id: 'C', name: 'C课 · 轻量技术课（第5周后）', sub: '约35-40分钟 · 健身房', location: 'gym',
+    id: 'C', name: 'C课 · 中级力量课（第5周后）', sub: '约40-50分钟 · 健身房', location: 'gym',
     items: [
       { kind: 'note', text: '有氧 10 分钟（热身）' },
-      { kind: 'note', text: '髋铰链练习 / 垫高壶铃硬拉 2-3×6（轻重量，专注髋部向后折叠）' },
-      { exercise: 'pallof-press', dose: '2×10/侧' },
-      { exercise: 'farmer-carry', dose: '3×20米' }
+      { exercise: 'db-rdl', dose: '2-3×6-10' },
+      { exercise: 'seated-cable-row', dose: '3×8-12' },
+      { exercise: 'leg-press-partial', dose: '3×10-12' },
+      { exercise: 'back-ext', dose: '2×8-12' }
     ]
   }
 };
@@ -235,13 +285,13 @@ const PROGRAM = {
     {
       weeks: [5, 6, 7, 8], name: '耐力与功能容量',
       home: '每天15-25分钟，H1/H2各2天、H0 3天',
-      gym: '每周2次A/B；连续2周绿灯可加第3次C课，RPE 5-6，每动作2-3组',
+      gym: '每周2次A/B；连续2周绿灯可加第3次C课（中级），RPE 5-6，每动作2-3组',
       gate: '快走30分钟；侧桥每侧20-30秒'
     },
     {
       weeks: [9, 10, 11, 12], name: '力量与回归',
       home: '每天10-20分钟，转为激活与恢复',
-      gym: '每周2-3次A/B/C，RPE 5-7，主动作3组；按门槛加入轻RDL',
+      gym: '每周2-3次A/B/C，RPE 5-7，主动作3组；C课可加入杠铃RDL等高级动作',
       gate: '连续2-3周稳定，能以良好技术完成目标负荷'
     }
   ],

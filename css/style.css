@@ -189,6 +189,27 @@ body {
   padding: 2px 6px;
   color: #8a6d1a;
 }
+.tag-level-beginner, .tag-level-intermediate, .tag-level-advanced {
+  font-size: 0.75rem;
+  border-radius: 6px;
+  padding: 2px 6px;
+  border: 1px solid;
+}
+.tag-level-beginner {
+  background: #e6f4ea;
+  border-color: #a3d9b1;
+  color: #1e7e34;
+}
+.tag-level-intermediate {
+  background: #fff8e1;
+  border-color: #f0dfa8;
+  color: #8a6d1a;
+}
+.tag-level-advanced {
+  background: #fce8e6;
+  border-color: #f5b7b1;
+  color: #b71c1c;
+}
 
 /* 动作卡片通用 */
 .ex-card { margin-bottom: 12px; }
