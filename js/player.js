@@ -49,7 +49,7 @@ var Player = (function () {
     S = {
       title: title, items: items, idx: 0, set: 1,
       count: 0, timerId: null, timerLeft: 0, timerTotal: 0,
-      mode: 'item', restLeft: REST_SEC, light: null
+      mode: 'item', restLeft: REST_SEC, light: null, skipped: []
     };
     renderItem();
   }
@@ -98,7 +98,8 @@ var Player = (function () {
     var h = '<div class="ex-card">';
     var animHtml = AnimHelper.html(ex, 'ex-anim player-anim');
     if (animHtml) h += '<div class="anim-wrap">' + animHtml + '</div>';
-    h += '<div class="ex-name">' + esc(ex.name) + '</div>';
+    h += '<div class="ex-name">' + esc(ex.name) +
+      ' <span class="loc-badge ' + ex.location + '">' + (ex.location === 'home' ? '🏠 居家' : '🏋️ 健身房') + '</span></div>';
     h += '<div class="ex-en">' + esc(ex.en) + ' · ' + esc(ex.muscles) + '</div>';
     h += '<div class="ex-meta"><span>器械：' + esc(ex.equipment) + '</span></div>';
     h += '<div class="ex-dose">剂量：' + esc(it.dose) +
@@ -125,6 +126,7 @@ var Player = (function () {
     if (ex.stop) {
       h += '<div class="ex-stop">⛔ ' + esc(ex.stop) + '</div>';
     }
+    h += '<div class="ex-actions"><button class="btn btn-ghost" id="p-skip-btn">⏭ 跳过此动作</button></div>';
     h += '</div>';
     return h;
   }
@@ -175,9 +177,12 @@ var Player = (function () {
     bindExit();
     AnimHelper.bind(el);
 
+    /* 跳过此动作 */
+    var skipBtn = document.getElementById('p-skip-btn');
+    if (skipBtn) skipBtn.addEventListener('click', skipExercise);
+
     /* 换动作 */
-    var swBtn = document.getElementById('p-switch-btn');
-    if (swBtn) {
+    var swBtn = document.getElementById('p-switch-btn');    if (swBtn) {
       swBtn.addEventListener('click', function () {
         var opts = document.getElementById('p-switch-options');
         if (opts) opts.style.display = opts.style.display === 'none' ? 'block' : 'none';
@@ -256,6 +261,13 @@ var Player = (function () {
     }
   }
 
+  function skipExercise() {
+    clearTimer();
+    var it = S.items[S.idx];
+    if (it && it.kind === 'exercise') S.skipped.push(it.ex.name);
+    nextItem();
+  }
+
   function startRest() {
     clearTimer();
     S.mode = 'rest';
@@ -300,6 +312,9 @@ var Player = (function () {
     var h = '<div class="card summary-card">';
     h += '<div class="summary-title">训练完成 🎉</div>';
     h += '<div class="summary-session">' + esc(S.title) + '</div>';
+    if (S.skipped.length) {
+      h += '<div class="summary-skipped">⏭ 本次跳过：' + esc(S.skipped.join('、')) + '</div>';
+    }
     h += '<div class="light-label">本次训练感受（红绿灯）</div>';
     h += '<div class="light-btns">';
     h += '<button class="btn light-btn" data-light="green">🟢<span>轻松</span></button>';

@@ -347,3 +347,38 @@ body {
 .ex-switch { margin: 8px 0; }
 .ex-switch-options { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
 .switch-opt { font-size: 0.9rem; }
+
+/* ===== 动作库分组标题 ===== */
+.lib-section-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 16px 4px 8px;
+  color: #1a1a1a;
+}
+.lib-count {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+  margin-left: 4px;
+}
+/* ===== 跟练页场景标签与操作按钮 ===== */
+.loc-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.loc-badge.home { background: #e6f7ff; color: #0958d9; }
+.loc-badge.gym { background: #fff1f0; color: #cf1322; }
+.ex-actions { margin: 10px 0 4px; }
+.summary-skipped {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-size: 0.92rem;
+  color: #595959;
+}
