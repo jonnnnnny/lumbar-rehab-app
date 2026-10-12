@@ -74,42 +74,42 @@ const EXERCISES = [
   },
   {
     id: 'pallof-press', name: 'Pallof 推', en: 'Pallof Press', location: 'gym',
-    muscles: '核心、腹斜肌', equipment: '绳索/弹力带', anim: 'assets/anim/gifs/pallof-press.gif',
+    muscles: '核心、腹斜肌', equipment: '绳索/弹力带', alt: ['dead-bug'], anim: 'assets/anim/gifs/pallof-press.gif',
     steps: ['绳索与胸口同高，侧对器械站立', '肋骨叠在骨盆上', '双手前推时身体不被拉转', '从轻重量、窄站距开始'],
     mistakes: ['被绳索拉转身体'], stop: null,
     dosing: { sets: '2-3', reps: '8-12次/侧' }, type: 'reps'
   },
   {
     id: 'chest-row', name: '胸托划船', en: 'Chest Supported Row', location: 'gym',
-    muscles: '背部、肱二头', equipment: '胸托划船器械', anim: ['assets/anim/svg/chest-row/frame-1.svg','assets/anim/svg/chest-row/frame-2.svg','assets/anim/svg/chest-row/frame-3.svg'],
+    muscles: '背部、肱二头', equipment: '胸托划船器械', alt: ['lat-pulldown'], tip: '无胸托划船器械时，可用坐姿绳索划船替代', anim: ['assets/anim/svg/chest-row/frame-1.svg','assets/anim/svg/chest-row/frame-2.svg','assets/anim/svg/chest-row/frame-3.svg'],
     steps: ['胸部贴稳支撑垫，脚掌踩实', '先下沉肩胛', '再把肘拉向后下方', '不为增加幅度而挺腰'],
     mistakes: ['挺腰代偿'], stop: null,
     dosing: { sets: '2-3', reps: '8-12次' }, type: 'reps'
   },
   {
     id: 'lat-pulldown', name: '中立握下拉', en: 'Lat Pulldown', location: 'gym',
-    muscles: '背阔肌', equipment: '高位下拉器械', anim: 'assets/anim/gifs/lat-pulldown.gif',
+    muscles: '背阔肌', equipment: '高位下拉器械', alt: ['chest-row'], anim: 'assets/anim/gifs/lat-pulldown.gif',
     steps: ['躯干略后倾但保持稳定', '把手拉向上胸', '肩膀远离耳朵', '不反复甩动借力'],
     mistakes: ['甩动借力'], stop: '坐位诱发腿症状改为胸托划船',
     dosing: { sets: '2-3', reps: '8-12次' }, type: 'reps'
   },
   {
     id: 'goblet-squat', name: '箱式高脚杯深蹲', en: 'Goblet Box Squat', location: 'gym',
-    muscles: '股四头、臀、核心', equipment: '哑铃+高箱', anim: 'assets/anim/gifs/goblet-squat.gif',
+    muscles: '股四头、臀、核心', equipment: '哑铃+高箱', alt: ['sit-stand'], anim: 'assets/anim/gifs/goblet-squat.gif',
     steps: ['哑铃贴近胸口', '向后坐到高箱/长凳', '膝脚同向', '躯干与骨盆整体移动', '从高箱开始，稳定后再降低'],
     mistakes: ['膝内扣', '弯腰'], stop: null,
     dosing: { sets: '2-3', reps: '6-10次' }, type: 'reps'
   },
   {
     id: 'split-squat', name: '扶架分腿蹲', en: 'Split Squat', location: 'gym',
-    muscles: '股四头、臀、核心', equipment: '哑铃+固定架', anim: 'assets/anim/gifs/split-squat.gif',
+    muscles: '股四头、臀、核心', equipment: '哑铃+固定架', alt: ['sit-stand'], tip: '平衡较差的新手可用坐到站代替', anim: 'assets/anim/gifs/split-squat.gif',
     steps: ['一手扶架保持平衡', '前脚全掌着地', '垂直下降，后膝朝地面', '避免前后摇晃', '先徒手再持轻哑铃'],
     mistakes: ['身体前后摇晃'], stop: null,
     dosing: { sets: '2-3', reps: '6-10次/侧' }, type: 'reps'
   },
   {
     id: 'hip-thrust', name: '髋推', en: 'Hip Thrust', location: 'gym',
-    muscles: '臀肌、腘绳肌', equipment: '杠铃/哑铃+凳', anim: ['assets/anim/svg/hip-thrust/frame-1.svg','assets/anim/svg/hip-thrust/frame-2.svg','assets/anim/svg/hip-thrust/frame-3.svg'],
+    muscles: '臀肌、腘绳肌', equipment: '杠铃/哑铃+凳', alt: ['glute-bridge'], tip: '新手第1-2周可用臀桥代替，先掌握臀部发力再做髋推', anim: ['assets/anim/svg/hip-thrust/frame-1.svg','assets/anim/svg/hip-thrust/frame-2.svg','assets/anim/svg/hip-thrust/frame-3.svg'],
     steps: ['下巴微收，肋骨不外翻', '由臀部完成伸髋', '顶端不过度后仰', '重量放髋部并用软垫'],
     mistakes: ['顶端过度后仰'], stop: null,
     dosing: { sets: '2-3', reps: '8-12次' }, type: 'reps'
@@ -130,14 +130,14 @@ const EXERCISES = [
   },
   {
     id: 'db-rdl', name: '哑铃罗马尼亚硬拉（进阶）', en: 'Dumbbell RDL', location: 'gym',
-    muscles: '臀、腘绳肌、下背', equipment: '哑铃', anim: 'assets/anim/gifs/db-rdl.gif',
+    muscles: '臀、腘绳肌、下背', equipment: '哑铃', alt: ['hip-thrust', 'glute-bridge'], anim: 'assets/anim/gifs/db-rdl.gif',
     steps: ['哑铃沿大腿下降，臀部向后', '只到还能保持控制的深度', '感受腘绳肌张力后夹臀站起', '不在底部反弹'],
     mistakes: ['底部反弹', '腰部弯曲'], stop: '出现腿部远端化（症状向小腿/足扩散）立即停止',
     dosing: { sets: '2-3', reps: '6-10次', advanced: true }, type: 'reps'
   },
   {
     id: 'back-ext', name: '臀主导45°背伸（进阶可选）', en: 'Back Extension', location: 'gym',
-    muscles: '臀、腘绳肌、下背', equipment: '罗马背伸椅', anim: 'assets/anim/gifs/back-ext.gif',
+    muscles: '臀、腘绳肌、下背', equipment: '罗马背伸椅', alt: ['glute-bridge', 'hip-thrust'], anim: 'assets/anim/gifs/back-ext.gif',
     steps: ['髋垫低于髋折点', '动作发力来自髋部', '只起到身体成直线', '优先徒手'],
     mistakes: ['顶端过度后仰', '旋转'], stop: '对后伸敏感者、急性腿痛者不做',
     dosing: { sets: '2', reps: '8-12次', advanced: true }, type: 'reps'

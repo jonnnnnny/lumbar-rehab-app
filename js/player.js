@@ -104,6 +104,16 @@ var Player = (function () {
     h += '<div class="ex-dose">剂量：' + esc(it.dose) +
       (it.sets > 1 ? '　<span class="set-badge">第 ' + S.set + ' 组 / 共 ' + it.sets + ' 组</span>' : '') + '</div>';
     if (it.note) h += '<div class="ex-note">' + esc(it.note) + '</div>';
+    if (ex.tip) h += '<div class="ex-tip">💡 ' + esc(ex.tip) + '</div>';
+    if (ex.alt && ex.alt.length) {
+      h += '<div class="ex-switch"><button class="btn btn-ghost" id="p-switch-btn">🔄 换动作</button>';
+      h += '<div class="ex-switch-options" id="p-switch-options" style="display:none">';
+      ex.alt.forEach(function (altId) {
+        var altEx = EXERCISE_MAP[altId];
+        if (altEx) h += '<button class="btn btn-ghost switch-opt" data-alt="' + altId + '">' + esc(altEx.name) + '</button>';
+      });
+      h += '</div></div>';
+    }
     h += '<ol class="ex-steps">';
     ex.steps.forEach(function (s) { h += '<li>' + esc(s) + '</li>'; });
     h += '</ol>';
@@ -164,6 +174,27 @@ var Player = (function () {
     el.innerHTML = h;
     bindExit();
     AnimHelper.bind(el);
+
+    /* 换动作 */
+    var swBtn = document.getElementById('p-switch-btn');
+    if (swBtn) {
+      swBtn.addEventListener('click', function () {
+        var opts = document.getElementById('p-switch-options');
+        if (opts) opts.style.display = opts.style.display === 'none' ? 'block' : 'none';
+      });
+      el.querySelectorAll('.switch-opt').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var altEx = EXERCISE_MAP[b.dataset.alt];
+          if (!altEx) return;
+          var it2 = S.items[S.idx];
+          it2.ex = altEx;
+          var p2 = parseDose(it2.dose, altEx.type);
+          it2.sets = p2.sets; it2.target = p2.target; it2.seconds = p2.seconds;
+          S.set = 1;
+          renderItem();
+        });
+      });
+    }
 
     if (ex.type === 'reps') {
       document.getElementById('p-minus').addEventListener('click', function () {

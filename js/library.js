@@ -46,6 +46,7 @@ var LibraryPage = (function () {
         html += '<div class="lib-row"><span class="lib-label">剂量</span>' +
           esc(e.dosing.sets) + '组 × ' + esc(e.dosing.reps) +
           (e.dosing.note ? '（' + esc(e.dosing.note) + '）' : '') + '</div>';
+        if (e.tip) html += '<div class="ex-tip">💡 ' + esc(e.tip) + '</div>';
         html += '<div class="lib-label">动作要领</div><ol class="ex-steps">';
         e.steps.forEach(function (s) { html += '<li>' + esc(s) + '</li>'; });
         html += '</ol>';
